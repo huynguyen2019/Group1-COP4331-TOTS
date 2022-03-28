@@ -17,7 +17,6 @@ const User = require("./model/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const sgMail = require("@sendgrid/mail");
-const path = require('path');
 
 // mongodb://user@pass:url.com/
 mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
@@ -305,7 +304,7 @@ app.get("/session", (req, res) =>
 	res.send(req.session);
 });
 
-let port = 5000; // env.PORT
+let port = process.env.PORT || 5000; 
 app.listen(port, () =>
 {
 	console.log("Server up at " + port);
