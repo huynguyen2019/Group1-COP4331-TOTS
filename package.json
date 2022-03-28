@@ -2,10 +2,10 @@
   "name": "express",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node server.js",
-    "start:dev": "nodemon server.js"
-  },
+ "scripts": {
+  "start": "node index.js",
+  "heroku-postbuild": "cd client && yarn && yarn run build"
+},
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "bcryptjs": "^2.4.3",
