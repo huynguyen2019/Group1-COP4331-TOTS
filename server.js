@@ -26,15 +26,12 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
 const app = express();
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-// });
 
 app.use(session({
 	secret: "foo",
@@ -49,10 +46,9 @@ app.use(session({
 }));
 sgMail.setApiKey(process.env.REGISTER_AUTH_KEY);
 
-app.get('/', function (req, res) {
-  res.sendFile( __dirname + "/frontend/public/" + "index.html" );
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/frontend/build/index.html'));
 });
-
 
 app.get('/api', function (req, res) {
   res.send("lolz");
