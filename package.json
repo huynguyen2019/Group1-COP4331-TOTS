@@ -4,7 +4,7 @@
   "private": true,
  "scripts": {
   "start": "node index.js",
-  "heroku-postbuild": "cd frontend && npm i && npm run build"
+  "heroku-postbuild": "cd frontend && npm install && npm run build"
 },
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
